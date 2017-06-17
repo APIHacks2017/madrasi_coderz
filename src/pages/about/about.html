@@ -1,11 +1,43 @@
+<!-- Daily Fuel Price Page  -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      About
+      Daily Fuel Price
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <!-- Selecting Cities -->
+  <ion-list>
+    <ion-item *ngIf="cities">
+      <ion-label>City</ion-label>
+      <ion-select [(ngModel)]="city" (ngModelChange)="getPriceQuote()">
+        <ion-option *ngFor="let cityName of cities">{{cityName}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <!-- Showing Petrol Price -->
+  <ion-card *ngIf="pprice">
+    <ion-card-content>
+      {{lst_city}}
+      <br>
+      Rs. {{pprice}}
+      <br>
+      <span class="inside"> PETROL PRICE</span>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Showing Diesel Price -->
+  <ion-card class="card-md-diesel" *ngIf="dprice">
+    <ion-card-content>
+      {{lst_city}}
+      <br>
+      Rs. {{dprice}}
+      <br>
+      <span class="inside"> DIESEL PRICE</span>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
